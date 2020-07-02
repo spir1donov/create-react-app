@@ -399,6 +399,15 @@ module.exports = function (webpackEnv) {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
+            // load fonts the same way we do with images
+            {
+              test: [/\.ttf$/, /\.eot$/, /\.otf$/, /\.woff/],
+              loader: require.resolve('url-loader'),
+              options: {
+                limit: imageInlineSizeLimit,
+                name: 'static/media/[name].[hash:8].[ext]',
+              },
+            },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
