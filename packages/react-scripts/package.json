@@ -1,10 +1,10 @@
 {
-  "name": "react-scripts",
+  "name": "spir1donov-react-scripts",
   "version": "3.4.1",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/facebook/create-react-app.git",
+    "url": "https://github.com/spir1donov/create-react-app.git",
     "directory": "packages/react-scripts"
   },
   "license": "MIT",
