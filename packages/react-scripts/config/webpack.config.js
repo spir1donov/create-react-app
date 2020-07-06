@@ -264,7 +264,10 @@ module.exports = function (webpackEnv) {
               condition: /^\**!|@preserve|@license|@cc_on/i,
               filename: 'extracted-comments.js',
               banner: licenseFile =>
-                `License information can be found in ${licenseFile}`,
+                `/**
+ * Copyright © 2020 https://www.agbis.ru/
+ */
+License information can be found in ${licenseFile}`,
             },
           },
           sourceMap: shouldUseSourceMap,
@@ -753,15 +756,6 @@ module.exports = function (webpackEnv) {
           silent: true,
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
-        }),
-      isEnvProduction &&
-        // Adds a banner to the top of each generated chunk
-        // https://webpack.js.org/plugins/banner-plugin/
-        new webpack.BannerPlugin({
-          banner: `/**
- * Copyright 2020
- */`,
-          raw: true,
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
