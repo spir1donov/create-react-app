@@ -261,12 +261,12 @@ module.exports = function (webpackEnv) {
               ascii_only: true,
             },
             extractComments: {
-              condition: /^\**!|@preserve|@license|@cc_on/i,
-              filename: 'extracted-comments.js',
+              condition: true,
+              filename: file => {
+                return `${file}.LICENSE`;
+              },
               banner: licenseFile =>
-                `/**
- * Copyright © 2020 https://www.agbis.ru/
- */
+                `Copyright © 2020 Company Agbis https://www.agbis.ru/
 License information can be found in ${licenseFile}`,
             },
           },
