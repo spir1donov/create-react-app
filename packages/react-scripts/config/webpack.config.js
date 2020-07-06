@@ -225,9 +225,7 @@ module.exports = function (webpackEnv) {
         new TerserPlugin({
           extractComments: {
             condition: true,
-            filename: file => {
-              return `${file}.LICENSE`;
-            },
+            filename: () => 'LICENSE.txt',
             banner: licenseFile => {
               return `Copyright © 2020 Company Agbis https://www.agbis.ru/
 License information can be found in ${licenseFile}`;
