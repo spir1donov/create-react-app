@@ -223,6 +223,16 @@ module.exports = function (webpackEnv) {
       minimizer: [
         // This is only used in production mode
         new TerserPlugin({
+          extractComments: {
+            condition: true,
+            filename: file => {
+              return `${file}.LICENSE`;
+            },
+            banner: licenseFile => {
+              return `Copyright © 2020 Company Agbis https://www.agbis.ru/
+License information can be found in ${licenseFile}`;
+            },
+          },
           terserOptions: {
             parallel: true,
             parse: {
@@ -259,15 +269,6 @@ module.exports = function (webpackEnv) {
               // Turned on because emoji and regex is not minified properly using default
               // https://github.com/facebook/create-react-app/issues/2488
               ascii_only: true,
-            },
-            extractComments: {
-              condition: true,
-              filename: file => {
-                return `${file}.LICENSE`;
-              },
-              banner: licenseFile =>
-                `Copyright © 2020 Company Agbis https://www.agbis.ru/
-License information can be found in ${licenseFile}`,
             },
           },
           sourceMap: shouldUseSourceMap,
